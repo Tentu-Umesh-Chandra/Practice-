@@ -3,19 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testimonials - SC Website</title>
+    <title>Testimonials</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-    <!-- Header -->
-    <div class="bg-primary text-white py-4 mb-4">
-        <div class="container">
-            <h1 class="text-center mb-0">Customer Testimonials</h1>
-            <p class="text-center mb-0">See what our customers are saying about us</p>
-        </div>
-    </div>
-
-    <div class="container">
+    <div class="container mt-4">
         <!-- Testimonial Form -->
         <div class="card mb-4">
             <div class="card-body">
@@ -55,13 +47,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-4 mt-5">
-        <div class="container">
-            <p class="text-center mb-0">&copy; 2023 SC Website. All rights reserved.</p>
-        </div>
-    </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // DOM elements
@@ -80,7 +65,7 @@
                 id: 1,
                 name: "Ritu",
                 message: "It has been a positive experience with personable banking service in a timely manner",
-                date: "2023-10-15"
+                date: new Date().toLocaleDateString()
             }
         ];
 
@@ -102,16 +87,22 @@
             
             const nameInput = document.getElementById('nameInput');
             const messageInput = document.getElementById('messageInput');
+            const name = nameInput.value.trim();
+            const message = messageInput.value.trim();
+            
+            if (!name || !message) {
+                return;
+            }
             
             if (currentlyEditingId) {
                 // Update existing testimonial
-                updateTestimonial(currentlyEditingId, nameInput.value.trim(), messageInput.value.trim());
+                updateTestimonial(currentlyEditingId, name, message);
             } else {
                 // Create new testimonial
                 const newTestimonial = {
                     id: Date.now(),
-                    name: nameInput.value.trim(),
-                    message: messageInput.value.trim(),
+                    name: name,
+                    message: message,
                     date: new Date().toLocaleDateString()
                 };
                 
@@ -130,19 +121,20 @@
 
         // Render all testimonials
         function renderTestimonials() {
-            if (testimonials.length > 0) {
-                emptyState.style.display = 'none';
-            } else {
-                emptyState.style.display = 'block';
-                return;
-            }
-            
+            // Clear container first
             testimonialsContainer.innerHTML = '';
             
-            testimonials.forEach(testimonial => {
-                const testimonialElement = createTestimonialElement(testimonial);
-                testimonialsContainer.appendChild(testimonialElement);
-            });
+            if (testimonials.length > 0) {
+                emptyState.style.display = 'none';
+                
+                // Add each testimonial to the container
+                testimonials.forEach(testimonial => {
+                    const testimonialElement = createTestimonialElement(testimonial);
+                    testimonialsContainer.appendChild(testimonialElement);
+                });
+            } else {
+                emptyState.style.display = 'block';
+            }
         }
 
         // Create testimonial HTML element
@@ -203,8 +195,13 @@
 
         // Delete testimonial directly without confirmation
         function deleteTestimonial(id) {
+            // Remove from array
             testimonials = testimonials.filter(t => t.id !== id);
+            
+            // Save to localStorage
             saveTestimonials();
+            
+            // Re-render testimonials immediately
             renderTestimonials();
             
             // If we were editing the deleted testimonial, reset the form
@@ -223,6 +220,17 @@
         }
 
         // Helper function to escape HTML
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    </script>
+</body>
+</html>        // Helper function to escape HTML
         function escapeHtml(unsafe) {
             return unsafe
                 .replace(/&/g, "&amp;")
