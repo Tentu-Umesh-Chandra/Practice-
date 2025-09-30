@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!-- Defines character encoding as UTF-8 -->
+  <title>Testimonials</title> <!-- Title shown in browser tab -->
+  <!-- Bootstrap CSS linked from CDN for styling -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4"> <!-- Adds padding to whole body -->
+
+  <div class="container"> <!-- Bootstrap container for alignment -->
+    <h2 class="mb-3">Add Testimonial</h2> <!-- Section heading -->
+
+    <!-- Row for Name input -->
+    <div class="mb-3 row"> <!-- Creates a row with margin-bottom -->
+      <label class="col-sm-2 col-form-label bg-primary text-white text-center">Name</label> <!-- Label for Name -->
+      <div class="col-sm-10"> <!-- Input field takes 10 columns width -->
+        <input type="text" id="name" class="form-control" placeholder="Your Name"> <!-- Input box with id 'name' -->
+      </div>
+    </div>
+
+    <!-- Row for Message input -->
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label bg-primary text-white text-center">Message</label>
+      <div class="col-sm-10">
+        <input type="text" id="message" class="form-control" placeholder="Enter your Message"> <!-- Input box with id 'message' -->
+      </div>
+    </div>
+
+    <!-- Submit button that calls addTestimonial() when clicked -->
+    <button class="btn btn-success" onclick="addTestimonial()">Submit</button>
+
+    <hr> <!-- Horizontal line -->
+    <h3>Testimonials</h3>
+    <div id="testimonialList"></div> <!-- Container where testimonials will appear -->
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Function Definition
+    function addTestimonial() {
+      // Get the value from Name input and remove extra spaces
+      let name = document.getElementById("name").value.trim(); // assigning input value to variable
+      // Get the value from Message input
+      let message = document.getElementById("message").value.trim();
+
+      // Validation: if either name or message is empty, show alert
+      if (name === "" || message === "") {
+        alert("Please enter both name and message!"); // shows popup
+        return; // stops function execution
+      }
+
+      // Create a card div dynamically
+      let testimonialCard = document.createElement("div"); // defining a new div
+      testimonialCard.className = "card mb-3"; // assigning Bootstrap card classes
+
+      // Create card body
+      let cardBody = document.createElement("div"); // defining another div
+      cardBody.className = "card-body"; // assigning class
+
+      // Create element for Name
+      let nameEl = document.createElement("h5"); // defining heading element
+      nameEl.className = "card-title"; // assigning class
+      nameEl.textContent = name; // assigning the typed name as text
+
+      // Create element for Message
+      let messageEl = document.createElement("p"); // defining paragraph element
+      messageEl.className = "card-text"; // assigning class
+      messageEl.textContent = message; // assigning the typed message as text
+
+      // Create div for action buttons (Edit/Delete)
+      let actionDiv = document.createElement("div"); // defining div
+      actionDiv.className = "text-end"; // aligns content to right
+
+      // Create Edit button
+      let editBtn = document.createElement("button"); // defining button
+      editBtn.className = "btn btn-success btn-sm me-2"; // assigning style
+      editBtn.textContent = "Edit"; // button text
+      // Assign function to run when Edit is clicked
+      editBtn.onclick = function () { // function assigned (anonymous function)
+        let newMessage = prompt("Edit your message:", messageEl.textContent); // popup with current message
+        if (newMessage !== null) { // if user doesn’t press cancel
+          messageEl.textContent = newMessage; // update the message
+        }
+      };
+
+      // Create Delete button
+      let deleteBtn = document.createElement("button");
+      deleteBtn.className = "btn btn-success btn-sm"; // assigning class
+      deleteBtn.textContent = "Delete"; // button text
+      // Assign function to delete testimonial when clicked
+      deleteBtn.onclick = function () {
+        testimonialCard.remove(); // removes the card from page
+      };
+
+      // Add buttons inside actionDiv
+      actionDiv.appendChild(editBtn);
+      actionDiv.appendChild(deleteBtn);
+
+      // Add Name, Message, and Buttons into card body
+      cardBody.appendChild(nameEl);
+      cardBody.appendChild(messageEl);
+      cardBody.appendChild(actionDiv);
+
+      // Add card body inside card
+      testimonialCard.appendChild(cardBody);
+
+      // Finally, add card inside testimonialList div (displaying it on page)
+      document.getElementById("testimonialList").appendChild(testimonialCard);
+
+      // Clear the input boxes after submission
+      document.getElementById("name").value = ""; // assigning empty value
+      document.getElementById("message").value = "";
+    }
+  </script>
+
+</body>
+</html>
