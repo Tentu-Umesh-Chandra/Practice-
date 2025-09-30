@@ -9,29 +9,29 @@
 <body class="bg-light">
     <div class="container mt-4">
         <!-- Testimonial Form -->
-        <div class="card mb-4 border-primary">
-            <div class="card-body bg-primary bg-opacity-10">
-                <h2 class="card-title mb-3 text-primary">Share Your Experience</h2>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title mb-3">Share Your Experience</h2>
                 <form id="testimonialForm">
                     <div class="row align-items-center mb-3">
                         <div class="col-md-2">
-                            <label class="form-label mb-0 fw-bold">Name</label>
+                            <label class="form-label mb-0 fw-bold text-primary">Name</label>
                         </div>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" id="nameInput" placeholder="Enter your name" required>
+                            <input type="text" class="form-control border-primary" id="nameInput" placeholder="Enter your name" required>
                         </div>
                     </div>
-                    <div class="row align-items-center mb-4">
+                    <div class="row align-items-center mb-3">
                         <div class="col-md-2">
-                            <label class="form-label mb-0 fw-bold">Message</label>
+                            <label class="form-label mb-0 fw-bold text-primary">Message</label>
                         </div>
                         <div class="col-md-10">
-                            <textarea class="form-control" id="messageInput" rows="3" placeholder="Enter your message" required></textarea>
+                            <textarea class="form-control border-primary" id="messageInput" rows="3" placeholder="Enter your message" required></textarea>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3">
-                            <button type="submit" class="btn btn-primary w-100" id="submitBtn">Submit Testimonial</button>
+                        <div class="col-md-2 offset-md-2">
+                            <button type="submit" class="btn btn-primary w-100" id="submitBtn">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -114,7 +114,7 @@
             // Reset form
             testimonialForm.reset();
             currentlyEditingId = null;
-            submitBtn.textContent = 'Submit Testimonial';
+            submitBtn.textContent = 'Submit';
             submitBtn.classList.remove('btn-warning');
             submitBtn.classList.add('btn-primary');
         });
@@ -140,11 +140,11 @@
         // Create testimonial HTML element
         function createTestimonialElement(testimonial) {
             const card = document.createElement('div');
-            card.className = 'card mb-3 border-primary';
+            card.className = 'card mb-3';
             card.setAttribute('data-id', testimonial.id);
             
             card.innerHTML = `
-                <div class="card-body bg-primary bg-opacity-10">
+                <div class="card-body">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <h5 class="card-title mb-0 text-primary">${escapeHtml(testimonial.name)}</h5>
                         <div>
@@ -152,7 +152,7 @@
                             <button class="btn btn-outline-danger btn-sm btn-delete" data-id="${testimonial.id}">Delete</button>
                         </div>
                     </div>
-                    <p class="card-text mb-0">${escapeHtml(testimonial.message)}</p>
+                    <p class="card-text mb-0 text-primary">${escapeHtml(testimonial.message)}</p>
                 </div>
             `;
             
@@ -173,7 +173,7 @@
             document.getElementById('nameInput').value = testimonial.name;
             document.getElementById('messageInput').value = testimonial.message;
             currentlyEditingId = id;
-            submitBtn.textContent = 'Update Testimonial';
+            submitBtn.textContent = 'Update';
             submitBtn.classList.remove('btn-primary');
             submitBtn.classList.add('btn-warning');
             
@@ -207,7 +207,7 @@
             if (currentlyEditingId === id) {
                 testimonialForm.reset();
                 currentlyEditingId = null;
-                submitBtn.textContent = 'Submit Testimonial';
+                submitBtn.textContent = 'Submit';
                 submitBtn.classList.remove('btn-warning');
                 submitBtn.classList.add('btn-primary');
             }
