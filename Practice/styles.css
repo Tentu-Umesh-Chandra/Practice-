@@ -1,0 +1,194 @@
+:root {
+    --sc-blue: #1D3D6F;
+    --sc-light-blue: #3A6BB5;
+    --sc-gold: #D4AF37;
+    --sc-light-gray: #F5F5F5;
+    --sc-dark-gray: #333333;
+    --sc-red: #D32F2F;
+    --sc-green: #388E3C;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: var(--sc-dark-gray);
+}
+
+.navbar {
+    background-color: var(--sc-blue);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    color: white;
+    font-weight: bold;
+}
+
+.sc-sidebar {
+    background-color: white;
+    min-height: calc(100vh - 56px);
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sc-sidebar .nav-link {
+    color: var(--sc-dark-gray);
+    padding: 12px 20px;
+    border-left: 3px solid transparent;
+    transition: all 0.3s;
+}
+
+.sc-sidebar .nav-link:hover, .sc-sidebar .nav-link.active {
+    background-color: var(--sc-light-gray);
+    border-left: 3px solid var(--sc-blue);
+    color: var(--sc-blue);
+}
+
+.sc-sidebar .nav-link i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.dashboard-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border: none;
+    transition: transform 0.3s;
+    margin-bottom: 20px;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background-color: var(--sc-blue);
+    color: white;
+    border-radius: 8px 8px 0 0 !important;
+    font-weight: 600;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--sc-red);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-pending {
+    background-color: #FFF3CD;
+    color: #856404;
+}
+
+.status-approved {
+    background-color: #D1ECF1;
+    color: #0C5460;
+}
+
+.status-rejected {
+    background-color: #F8D7DA;
+    color: #721C24;
+}
+
+.status-submitted {
+    background-color: #D4EDDA;
+    color: #155724;
+}
+
+.progress-bar-custom {
+    background-color: var(--sc-blue);
+}
+
+.btn-sc-primary {
+    background-color: var(--sc-blue);
+    color: white;
+    border: none;
+}
+
+.btn-sc-primary:hover {
+    background-color: var(--sc-light-blue);
+    color: white;
+}
+
+.btn-sc-outline {
+    background-color: transparent;
+    color: var(--sc-blue);
+    border: 1px solid var(--sc-blue);
+}
+
+.btn-sc-outline:hover {
+    background-color: var(--sc-blue);
+    color: white;
+}
+
+.sc-footer {
+    background-color: var(--sc-blue);
+    color: white;
+    padding: 30px 0;
+    margin-top: 40px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.social-icons a {
+    color: white;
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+.loan-type-card {
+    border-left: 4px solid var(--sc-blue);
+}
+
+.loan-type-card.personal {
+    border-left-color: var(--sc-blue);
+}
+
+.loan-type-card.home {
+    border-left-color: var(--sc-gold);
+}
+
+.loan-type-card.vehicle {
+    border-left-color: var(--sc-green);
+}
+
+.application-progress {
+    height: 8px;
+    border-radius: 4px;
+}
+
+.notification-item {
+    border-left: 3px solid var(--sc-blue);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 0 4px 4px 0;
+}
+
+.notification-item.unread {
+    background-color: #E8F4FD;
+    border-left-color: var(--sc-light-blue);
+}
