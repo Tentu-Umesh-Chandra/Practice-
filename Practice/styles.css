@@ -9,18 +9,34 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
-    color: var(--sc-dark-gray);
+    /* font-family: "SC Prosper Sans Variable", "SC Sans Web", "SC Sans", Arial, sans-serif;
+    background-color: #fff;
+    color: var(--sc-dark-gray); */
+    background-color: #fff;
+    color: #525355;
+    font-family: "SC Prosper Sans Variable", "SC Sans Web", "SC Sans", Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.4;
+    font-size: 16px;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    -webkit-font-feature-settings: "ss01";
+    font-feature-settings: "ss01";
 }
 
 .navbar {
     background-color: var(--sc-blue);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    /* color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex */
+;
 }
 
 .navbar-brand {
-    color: white;
+    color: #525355;
     font-weight: bold;
 }
 
@@ -115,19 +131,19 @@ body {
 }
 
 .btn-sc-primary {
-    background-color: var(--sc-blue);
+    background-color: #0473ea;
     color: white;
     border: none;
 }
 
 .btn-sc-primary:hover {
-    background-color: var(--sc-light-blue);
+    background-color: #5496dc;
     color: white;
 }
 
 .btn-sc-outline {
     background-color: transparent;
-    color: var(--sc-blue);
+    color: #0473ea  ;
     border: 1px solid var(--sc-blue);
 }
 
@@ -191,4 +207,12 @@ body {
 .notification-item.unread {
     background-color: #E8F4FD;
     border-left-color: var(--sc-light-blue);
+}
+
+.slanted-gradient {
+  background: linear-gradient(135deg, #007bff 50%, #28a745 50%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
