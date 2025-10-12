@@ -1,4 +1,3 @@
-/* Standard Chartered CSS from their website */
 :root {
     --sc-blue: #1D3D6F;
     --sc-light-blue: #3A6BB5;
@@ -115,8 +114,8 @@ body {
 
 .notification-badge {
     position: absolute;
-    top: -5px;
-    right: -5px;
+    top: 1px;
+    right: 0px;
     background-color: var(--sc-red);
     color: white;
     border-radius: 50%;
@@ -257,6 +256,7 @@ body {
     padding: 40px 0;
     border-radius: 8px;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 .hero-banner h1 {
@@ -323,4 +323,77 @@ body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+}
+
+.text-left{
+    text-align: left;
+}
+
+/* Additional styles for new components */
+
+/* Contact Information Styles */
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Accordion Styles */
+.accordion-button:not(.collapsed) {
+  background-color: rgba(29, 61, 111, 0.1);
+  color: var(--sc-blue);
+  border-color: var(--sc-blue);
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(29, 61, 111, 0.25);
+  border-color: var(--sc-blue);
+}
+
+/* Form Styles */
+.form-control:focus {
+  border-color: var(--sc-blue);
+  box-shadow: 0 0 0 0.25rem rgba(29, 61, 111, 0.25);
+}
+
+/* Pagination Styles */
+.page-link {
+  color: var(--sc-blue);
+  border-color: #dee2e6;
+}
+
+.page-link:hover {
+  color: var(--sc-light-blue);
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.page-item.active .page-link {
+  background-color: var(--sc-blue);
+  border-color: var(--sc-blue);
+}
+
+/* Notification Action Buttons */
+.notification-item .btn-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+/* Switch Toggle Styles */
+.form-check-input:checked {
+  background-color: var(--sc-blue);
+  border-color: var(--sc-blue);
+}
+
+.form-check-input:focus {
+  border-color: var(--sc-blue);
+  box-shadow: 0 0 0 0.25rem rgba(29, 61, 111, 0.25);
+}
+
+/* Badge Styles */
+.badge {
+  font-size: 11px;
+  font-weight: 500;
 }

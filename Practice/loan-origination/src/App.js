@@ -1,14 +1,12 @@
 import React from 'react';
-// import UserDashboard from './components/UserDashboard/UserDashboard';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import UserDashboard from './components/UserDashBoard/UserDashboard';
+import { BrowserRouter } from 'react-router-dom';
+import UserDashboardRoutes from './routes/UserDashboardRoutes';
 
 function App() {
   return (
-    <div className="App">
-      <UserDashboard />
-    </div>
+    <BrowserRouter>
+      <UserDashboardRoutes />
+    </BrowserRouter>
   );
 }
 
