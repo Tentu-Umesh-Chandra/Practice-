@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import scbLogo from '../../assets/images/ScbLogo.png';
 
 function Header() {
   const location = useLocation();
@@ -10,7 +11,7 @@ function Header() {
         <nav className="navbar navbar-expand-lg sc-navbar">
           <div className="container-fluid">
             <Link className="navbar-brand" to="/dashboard">
-              <img src="/src/assets/images/SCBLo.png" alt="SCBLogo" className="sc-logo" />
+              <img src={scbLogo} alt="SCBLogo" className="sc-logo" />
             </Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
               <span className="navbar-toggler-icon"></span>
@@ -67,7 +68,11 @@ function Header() {
                     <i className="fas fa-user-circle me-1"></i> Umesh
                   </a>
                   <ul className="dropdown-menu dropdown-menu-end">
-                    <li><a className="dropdown-item" href="#"><i className="fas fa-user me-2"></i>Profile</a></li>
+                    <li>
+                      <Link className="dropdown-item" to="/profile">
+                        <i className="fas fa-user me-2"></i>Profile
+                      </Link>
+                    </li>
                     <li><a className="dropdown-item" href="#"><i className="fas fa-cog me-2"></i>Settings</a></li>
                     <li><hr className="dropdown-divider" /></li>
                     <li><a className="dropdown-item" href="#"><i className="fas fa-sign-out-alt me-2"></i>Logout</a></li>
